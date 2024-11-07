@@ -163,21 +163,26 @@ export function FormOrcamento() {
                     responseType: "blob",
                 });
 
+                const newWindow = window.open("", "_blank");
+
                 const blob = new Blob([response.data], { type: "application/pdf" });
                 const url = window.URL.createObjectURL(blob);
-                window.open(url, "_blank");
+
+                // Navigate the new window to the PDF URL
+                if (newWindow) {
+                    newWindow.location.href = url;
+                }
 
                 resolve("Orçamento gerado com sucesso!");
             } catch (error) {
-                console.error("Error opening PDF:", error);
-                reject("Erro ao gerar o orçamento.");
+                console.error("Error handling PDF:", error);
+                reject("Erro ao gerar orçamento.");
             } finally {
                 setLoading(false);
             }
         });
 
         toast.loading({
-            // Initial message:
             text: "Gerando orçamento",
             options: {
                 promise: generateEstimateReq,

@@ -34,7 +34,6 @@ export default function Home() {
                     </Alert>
                 )}
             </div>
-            <hr></hr>
             <FormOrcamento />
         </div>
     );
