@@ -68,7 +68,7 @@ export const ItensInput = React.forwardRef<HTMLInputElement, ItensInputProps>(
                                 <FormLabel>Valor</FormLabel>
                                 <FormControl>
                                     <div className='relative flex'>
-                                        <label className='absolute top-[calc(50%+1px)] -translate-y-1/2 text-sm leading-[1px] ml-3'>
+                                        <label className='absolute top-[calc(50%)] -translate-y-1/2 text-sm leading-[1px] ml-3'>
                                             R$
                                         </label>
                                         <Input
