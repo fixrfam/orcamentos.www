@@ -3,8 +3,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { conditionalEdge } from "@/lib/utils";
 import { InfoIcon } from "lucide-react";
 
-// Setting for cloudflare pages deployment
-export const runtime = conditionalEdge;
+// Setting for cloudflare pages, place this at all pages so it can be deployed successfully
+export const runtime = "edge";
 
 export default function Home() {
     const catiFamStart = new Date("2024-11-11T18:00:00-03:00"); // Início da apresentação no VII CATI FAM
