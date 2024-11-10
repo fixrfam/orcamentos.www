@@ -1,9 +1,10 @@
 import { FormOrcamento } from "@/components/orcamento/FormOrcamento";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { conditionalEdge } from "@/lib/utils";
 import { InfoIcon } from "lucide-react";
 
-//Setting for cloudflare pages deployment
-export const runtime = "edge";
+// Setting for cloudflare pages deployment
+export const runtime = conditionalEdge;
 
 export default function Home() {
     const catiFamStart = new Date("2024-11-11T18:00:00-03:00"); // Início da apresentação no VII CATI FAM
@@ -13,7 +14,7 @@ export default function Home() {
     const isCatiFamPeriod = currentTime >= catiFamStart && currentTime <= catiFamEnd;
 
     return (
-        <div className='space-y-8 pb-20'>
+        <div className='space-y-6 pb-20'>
             <div className=''>
                 <h1 className='text-4xl tracking-tight font-semibold'>Orçamentos</h1>
                 <h2 className='text-muted-foreground text-lg tracking-tight'>

@@ -7,11 +7,12 @@ import { z } from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { ArrowRight, Loader2, Plus, RotateCcw, Sparkles } from "lucide-react";
+import { ArrowRight, Loader2, Plus, RotateCcw, Sparkles, InfoIcon } from "lucide-react";
 import axios from "axios";
 import { useState } from "react";
 import { ItensInput } from "./ItensInput";
 import { toast } from "@pheralb/toast";
+import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 
 const FormHeader = ({
     title,
@@ -196,7 +197,7 @@ export function FormOrcamento() {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
-                <div className='flex gap-2 '>
+                <div className='flex gap-2'>
                     <Button
                         variant={"outline"}
                         size={"sm"}
@@ -380,14 +381,24 @@ export function FormOrcamento() {
                     className='pt-4'
                 />
                 <div className='space-y-4'>
-                    {fields.map((field, index) => (
-                        <ItensInput
-                            key={field.id}
-                            control={form.control}
-                            index={index}
-                            remove={remove}
-                        />
-                    ))}
+                    {fields.length > 0 ? (
+                        fields.map((field, index) => (
+                            <ItensInput
+                                key={field.id}
+                                control={form.control}
+                                index={index}
+                                remove={remove}
+                            />
+                        ))
+                    ) : (
+                        <Alert className='text-secondary-foreground'>
+                            <InfoIcon className='size-4' />
+                            <AlertTitle>Nenhum item adicionado</AlertTitle>
+                            <AlertDescription className='text-muted-foreground'>
+                                Adicione itens ao orçamento clicando no botão abaixo.
+                            </AlertDescription>
+                        </Alert>
+                    )}
                 </div>
 
                 {/* Adicionar item */}

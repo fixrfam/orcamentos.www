@@ -96,6 +96,7 @@ export const ItensInput = React.forwardRef<HTMLInputElement, ItensInputProps>(
                                 <FormControl>
                                     <Input
                                         type='number'
+                                        className='w-20'
                                         placeholder='Qtd'
                                         {...field}
                                         onChange={(e) => field.onChange(parseInt(e.target.value))}
@@ -107,9 +108,9 @@ export const ItensInput = React.forwardRef<HTMLInputElement, ItensInputProps>(
 
                     <Button
                         type='button'
-                        variant='ghost'
+                        variant='outline'
                         size='icon'
-                        className='self-end'
+                        className='self-end border-none sm:border-destructive'
                         onClick={() => remove(index)}
                     >
                         <Trash2 className='h-4 w-4 text-destructive' />

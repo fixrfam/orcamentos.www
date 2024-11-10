@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
-import { Toaster } from "@pheralb/toast";
+import { Toaster } from "@/components/Toaster";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
     title: "Orçamentos - Fixr",
@@ -14,12 +15,14 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang='en'>
-            <body className={`antialiased flex flex-col items-center min-h-screen w-full px-6`}>
-                <Header />
-                <main className='w-full max-w-md '>{children}</main>
-                <Toaster theme='light' />
-            </body>
+        <html lang='en' suppressHydrationWarning>
+            <ThemeProvider attribute='class'>
+                <body className={`antialiased flex flex-col items-center min-h-screen w-full px-6`}>
+                    <Header />
+                    <main className='w-full max-w-md '>{children}</main>
+                    <Toaster />
+                </body>
+            </ThemeProvider>
         </html>
     );
 }
